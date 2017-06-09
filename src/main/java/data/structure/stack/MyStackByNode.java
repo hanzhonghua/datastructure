@@ -9,7 +9,7 @@ public class MyStackByNode<E> {
 	private class Node<E>{
 		private Node<E> next = null;
 		private E data;
-		public Node(E data){
+		public Node(E data){ 
 			this.data = data;
 		}
 	}
