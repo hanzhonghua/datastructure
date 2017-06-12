@@ -1,62 +1,79 @@
 package data.structure.queue;
 
+import javax.management.RuntimeErrorException;
+
+
 /**
- * 队列和是先进先出，同样使用数组和链表来实现
- * 这里使用数组实现
+ * 使用数组实现队列
+ * 队列是一个特殊线性表，特殊之处是它只允许在队尾添加元素，在队头删除操作
  */
 public class MyQueueByArray<E> {
 
-	private class Node<T>{
-		private Node<T> next = null;
-		private T data;
-		public Node(T data){
-			this.data = data;
-		}
+	private Object[] obj; //内置数组
+	private int front; //头指针
+	private int real; //尾指针
+	
+	public MyQueueByArray(){
+		obj = new Object[10];
+		front = 0;
+		real = -1;
 	}
 	
-	private Node<E> head = null;
-	private Node<E> tail = null;
-	
+	// 判断队列是否为空
 	public Boolean isEmpty(){
-		return head == tail;
+		return front == obj.length;
 	}
 	
-	public void put(E data){
-		Node<E> node = new Node<E>(data);
-		if(head == null && tail == null){ //队列为空
-			head = tail = node;
-		}else{
-			tail.next = node;
-			tail = node;
+	// 判断队列是否已满
+	public Boolean isFull(){
+		return obj.length - 1 == real;
+	}
+	
+	// 队尾添加元素
+	public void insert(E data){
+		if(isFull()){
+			throw new RuntimeException("队列已满");
 		}
+		obj[++real] = data;
 	}
 	
-	public E pop(){
-		if(this.isEmpty()){
+	// 获取队头元素
+	public E peekFront(){
+		if(isEmpty()){
 			return null;
 		}
-		E data = head.data;
-		head = head.next;
-		return data;
+		return (E) obj[front];
 	}
 	
-	public int size(){
-		Node<E> tmp = head;
-		int n = 0;
-		while(tmp != null){
-			n++;
-			tmp = tmp.next;
+	// 获取队尾元素
+	public E peekReal(){
+		if(isEmpty()){
+			return null;
 		}
-		return n;
+		return (E) obj[real];
 	}
+	
+	// 移除队头元素
+	public E remove(){
+		if(this.isEmpty()){
+			throw new RuntimeException("队列为空");
+		}
+		return (E) obj[front++];
+	}
+	
 	public static void main(String[] args) {
-		MyQueueByArray<Integer> queue = new MyQueueByArray<>();
-		queue.put(1);
-		queue.put(2);
-		queue.put(3);
-		queue.put(4);
+//		MyQueueByArray<Object> q = new MyQueueByArray<>();
+//		q.insert(1);
+//		q.insert(2);
+//		q.insert(3);
+//		q.insert(4);
+//		q.insert(5);
+//		System.out.println(q.peekFront());
+//		System.out.println(q.peekReal());
+//		
+//		System.out.println(q.remove());
+//		System.out.println(q.remove());
 		
-		System.out.println(queue.size());
-		System.out.println(queue.pop());
 	}
+	
 }
