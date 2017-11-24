@@ -11,5 +11,4 @@ package data.structure.stack;
  */
 public class MyStackByQueue<E> {
 
-	
 }

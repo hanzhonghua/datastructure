@@ -1,5 +1,8 @@
 package data.structure.stack;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * O(1)时间复杂度得到栈中最小元素，因为栈时先进后出，操作的是栈顶元素，按照以上设计
  * 想要得到栈中最小值元素必须使用遍历，那么时间复杂度就成了O(n)了，怎么在时间复杂度
@@ -49,7 +52,7 @@ public class MinStack {
 		}
 	}
 	public static void main(String[] args) {
-		MinStack minStack = new MinStack();
+		/*MinStack minStack = new MinStack();
 		minStack.push(10);
 		minStack.push(2);
 		minStack.push(6);
@@ -58,6 +61,7 @@ public class MinStack {
 		minStack.push(1);
 		
 		minStack.pop();
-		System.out.println(minStack.min.peek());
+		System.out.println(minStack.min.peek());*/
+		
 	}
 }

@@ -2,6 +2,8 @@ package data.structure.linked;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
 /**
  * @Title: SingleLinkedList.java
@@ -131,6 +133,18 @@ public class SingleLinkedList {
 		}
 	}
 	
+	// 链表翻转
+	public Node fanzhuan(Node n){
+		Node pre = null;
+		if(n != null){
+			Node next = n.next;
+			n.next = pre;
+			pre = n;
+			n = next;
+		}
+		return pre;
+	}
+	
 	public static void main(String[] args) {
 		SingleLinkedList list = new SingleLinkedList();
 		list.add(3);
@@ -146,7 +160,8 @@ public class SingleLinkedList {
 		list.printList();
 		System.out.println();
 //		list.deleteRepeat(list.head);
-		list.deleteDuplecate(list.head);
+//		list.deleteDuplecate(list.head);
+		list.fanzhuan(list.head);
 		list.printList();
 	}
 }
