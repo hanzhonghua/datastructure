@@ -15,7 +15,7 @@ public class FastSort {
 		}
 	}
 	
-	private static int getMiddle(int[] a,int low, int high){
+	private static void getMiddle(int[] a, int low, int high){
 		int temp = a[low]; // 基准元素
 		while(low<high){
 			// 找到比基准元素小的位置
