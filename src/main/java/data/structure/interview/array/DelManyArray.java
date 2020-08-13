@@ -26,13 +26,12 @@ public class DelManyArray {
             return 0;
         }
         int i=0;
-        for(int j=0;j<arr.length;j++){
+        for (int j=0;j<arr.length;j++){
             if(arr[i]!=arr[j]){
-                i++;
                 arr[i]=arr[j];
+                i++;
             }
         }
         return i+1;
-
     }
 }

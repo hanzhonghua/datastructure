@@ -16,25 +16,24 @@ public class MaoPaoSort {
     public static void main(String[] args) {
 
         int[] arr  = {1,4,3,2,7,6,5};
-        int[] sort = sort(arr);
-        for (int i=0;i<sort.length;i++){
-            System.out.print(sort[i]);
+        sort(arr);
+        for (int i=0;i<arr.length;i++){
+            System.out.print(arr[i]);
         }
     }
 
-    public static int[] sort(int[] arr){
+    public static void sort(int[] arr){
         if (arr==null||arr.length<=0){
-            return new int[0];
+            return;
         }
-        for (int i=0; i<arr.length; i++) {
-            for (int j=0; j<arr.length; j++) {
-                if (arr[i]<arr[j]) {
-                    int temp = arr[i];
-                    arr[i]=arr[j];
-                    arr[j]=temp;
+        for(int i=0;i<arr.length;i++){
+            for(int j=0;j<arr.length-i-1;j++){
+                if(arr[j]>arr[j+1]){
+                    int  tmp = arr[j];
+                    arr[j]=arr[j+1];
+                    arr[j+1]=tmp;
                 }
             }
         }
-        return arr;
     }
 }

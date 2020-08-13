@@ -18,4 +18,18 @@ public class Node {
     public Node (int data) {
         this.data = data;
     }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Node) {
+            Node node = (Node) obj;
+            return node.data == this.data && node.next.equals(this.next);
+        }
+        return false;
+    }
 }
